@@ -2,18 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>393577071759-bddnra0al6stteqb4b80oae0dn3ugla7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.393577071759-bddnra0al6stteqb4b80oae0dn3ugla7</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAHAOU-OuC9axqY2LteWjBbZXZguWv96hM</string>
+	<string>AIzaSyDoWDMOX0qxaVErGjgLUOmP5OjtYnVeRok</string>
 	<key>GCM_SENDER_ID</key>
-	<string>348902246814</string>
+	<string>393577071759</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.reactjs.native.example.FirstHealth</string>
+	<string>com.firsthealth.eucto</string>
 	<key>PROJECT_ID</key>
-	<string>firsthealthassisit</string>
+	<string>first-health-assist-firebase</string>
 	<key>STORAGE_BUCKET</key>
-	<string>firsthealthassisit.appspot.com</string>
+	<string>first-health-assist-firebase.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:348902246814:ios:4e0f6993325e3d1531ae8f</string>
+	<string>1:393577071759:ios:cd4fb4132260e459159cfa</string>
 </dict>
 </plist>

@@ -141,7 +141,7 @@ function Navigator() {
     // await messaging().registerDeviceForRemoteMessages();
     const token = await messaging().getToken();
 
-    console.log(token + " Token....");
+    console.log(token + " ===Token....");
 
     setRedux(setfcm({ fcm_token: token }));
   }

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "348902246814",
-    "project_id": "firsthealthassisit",
-    "storage_bucket": "firsthealthassisit.appspot.com"
+    "project_number": "393577071759",
+    "project_id": "first-health-assist-firebase",
+    "storage_bucket": "first-health-assist-firebase.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:348902246814:android:ed8e5e86c6c8210c31ae8f",
+        "mobilesdk_app_id": "1:393577071759:android:3ed06610db6e603f159cfa",
         "android_client_info": {
           "package_name": "com.firsthealth"
         }
@@ -15,12 +15,20 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyClBJo8CzszUhGGtmGE0peTLLmdyJ-55kg"
+          "current_key": "AIzaSyCq18xCvN-zVozYQYUoq5Cs-9QSQQaHwMQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393577071759-bddnra0al6stteqb4b80oae0dn3ugla7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.firsthealth.eucto"
+              }
+            }
+          ]
         }
       }
     }

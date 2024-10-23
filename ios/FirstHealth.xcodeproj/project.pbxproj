@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007D062A2CC8B87F008E502A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 007D06292CC8B87F008E502A /* GoogleService-Info.plist */; };
 		00E356F31AD99517003FC87E /* FirstHealthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FirstHealthTests.m */; };
 		07483F9AC0B7420992A233EC /* Poppins Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C6100A9E6C042CFB739DF70 /* Poppins Medium.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-FirstHealth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FirstHealth.a */; };
 		0CCF7E648A25462BBF6CE744 /* Comfortaa Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0924D09538D1459A84BCCE27 /* Comfortaa Light.ttf */; };
 		12075FC22C61E96600B81870 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 12075FC12C61E96600B81870 /* Fonts */; };
-		12A1D61B2CC0FF380008D965 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12A1D61A2CC0FF380008D965 /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -65,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		007D06282CC7B02E008E502A /* FirstHealthRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FirstHealthRelease.entitlements; path = FirstHealth/FirstHealthRelease.entitlements; sourceTree = "<group>"; };
+		007D06292CC8B87F008E502A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* FirstHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* FirstHealthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstHealthTests.m; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		12075FC12C61E96600B81870 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		127BBD8F9394432EB730B8DE /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBoldItalic.ttf"; path = "../app/assets/fonts/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		12A1D6192CC028E20008D965 /* FirstHealthDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FirstHealthDebug.entitlements; path = FirstHealth/FirstHealthDebug.entitlements; sourceTree = "<group>"; };
-		12A1D61A2CC0FF380008D965 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12E945543662411BAF79BF02 /* RobotoSlab-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoSlab-SemiBold.ttf"; path = "../app/assets/fonts/RobotoSlab-SemiBold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FirstHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FirstHealth/AppDelegate.h; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				12A1D61A2CC0FF380008D965 /* GoogleService-Info.plist */,
+				007D06292CC8B87F008E502A /* GoogleService-Info.plist */,
 				12075FC12C61E96600B81870 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* FirstHealth */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -393,7 +393,7 @@
 				8E44A99ADDDC455980F9B455 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				7AA3EB7A4B584321A3A2D2E9 /* Poppins-ExtraLight.ttf in Resources */,
 				E2A92A5E30464DA0BB0F1DB4 /* Poppins-ExtraLightItalic.ttf in Resources */,
-				12A1D61B2CC0FF380008D965 /* GoogleService-Info.plist in Resources */,
+				007D062A2CC8B87F008E502A /* GoogleService-Info.plist in Resources */,
 				548CCB55ABC240EB8A1EFB42 /* Poppins-Italic.ttf in Resources */,
 				4F644D6EF9774C2FB733370E /* Poppins-Light.ttf in Resources */,
 				58FA20D091F84192B91929BD /* Poppins-LightItalic.ttf in Resources */,
@@ -766,7 +766,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -838,7 +841,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

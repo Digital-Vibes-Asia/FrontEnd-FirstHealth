@@ -59,6 +59,8 @@ export default function BottomTabNavigation() {
           )
       );
 
+      alert(message?.notification?.title + " " + message?.notification?.body)
+
       // f = message?.data
       // console.log(JSON.stringify(f) + " Message....")
       // if (message?.notification?.android?.clickAction) {
