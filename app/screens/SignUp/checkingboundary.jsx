@@ -191,12 +191,7 @@ export default function CheckingBoundary({ route }) {
       <ActionBar
         txt={"Registration"}
         progress={2 / 7}
-        onPress={() => {
-          navigation.goBack()
-
-          // setConfigured(true);
-          // toggleUpperContainer();
-        }}
+        onPress={() =>  navigation.goBack()}
       ></ActionBar>
 
       <View style={{ height: "80%" }}>

@@ -33,7 +33,7 @@ const MyActivity = () => {
   const { activityPayload } = useSelector((state) => state?.operation);
   const [getActivity, { data: activityData, error, isLoading }] =
     usePostMutation();
-  console.log(isLoading, "api hit ");
+  console.log(activityData?.activities, "api hit activityData");
 
   const Divider = ({ text }) => {
     return (
@@ -75,6 +75,7 @@ const MyActivity = () => {
                   headText={activity?.activity}
                   subHead={moment(activity?.created_at).format('h:mm A')}
                   desc={user?.name}
+                  id={activity?.activity_id}
                 />
               </View>
             );

@@ -91,6 +91,7 @@ export default function ExistingPlan({ route }) {
   }, []);
 
   useEffect(() => {
+    console.log(supData,"test exists", supError)
     if (supData) {
       if (supData?.is_accepted) {
         navigation.navigate("ps");

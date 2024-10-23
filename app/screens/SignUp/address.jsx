@@ -57,7 +57,7 @@ const Address = () => {
 
     const [check, { data: checkdata, error: checkerror }] =
         usePostMutation();
-
+    console.log(checkdata,"check data error", checkerror)
 
     const getAddress = async (latitude, longitude) => {
         try {
@@ -65,7 +65,7 @@ const Address = () => {
 
             const address = response.results[0].formatted_address;
 
-            console.l
+            // console.l
             // const addressComponents = response.results[0].address_components;
             // let add1 = '';
             // let add2 = '';
@@ -151,8 +151,8 @@ const Address = () => {
         }
         else if (checkerror) {
             Alert.alert(
-                JSON.stringify(error?.status),
-                JSON.stringify(error?.data?.message),
+                checkerror?.status,
+                checkerror?.data?.message,
             );
         }
 

@@ -97,6 +97,7 @@ export default function SubscriptionPlans({ route }) {
   function validation() {}
 
   function addplan(id) {
+
     pay({
       data: {
         user_id: reg_id,
@@ -104,6 +105,7 @@ export default function SubscriptionPlans({ route }) {
         child_count: 0,
         senior_count: 0,
         adult_count: 0,
+        amount: 0
       },
       url: UrlBase.STEP6,
     });

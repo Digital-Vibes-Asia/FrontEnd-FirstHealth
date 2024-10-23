@@ -11,10 +11,12 @@ import { Input } from 'react-native-elements';
 import CheckCoverageButton from '../../common/Button/checkcoveragebutton';
 import RegisterButton from '../../common/Button/registerbutton';
 import ActionBar from '../../common/ActionBar/actionbar';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const LocationPicker = ({ onLocationSelect, next }) => {
+    const navigation = useNavigation()
     const ref = useRef();
     const [isFocused, setIsFocused] = useState(false);
 
@@ -289,11 +291,7 @@ const LocationPicker = ({ onLocationSelect, next }) => {
                     />
 
                 </View>
-                <CheckCoverageButton location={Inputvalue} value={"Check my coverage area"} onPress={() => {
-                    next()
-                    // ref.current.clear()
-
-                }}></CheckCoverageButton>
+                <CheckCoverageButton location={Inputvalue} value={"Check my coverage area"} onPress={next}></CheckCoverageButton>
             </View>
 
             {location && (

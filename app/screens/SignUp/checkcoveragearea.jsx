@@ -5,7 +5,6 @@ import {
   Alert,
 } from 'react-native';
 import { useEffect, useState, useReducer } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import ActionBar from '../../common/ActionBar/actionbar';
 import StepTxt from '../../common/TittleBox/steptxt';
@@ -23,6 +22,7 @@ import { usePostMutation } from '../../store/api';
 import { settemp_add } from '../../store/value';
 import WhDoubleInputBox from '../../common/textinputbox/whdoubleinputbox';
 import WhDoubleDD from '../../common/DropDown/whdoubledd';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -37,7 +37,7 @@ const PIReducer = (state, action) => {
 };
 
 export default function CheckCoverageArea() {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   const setRedux = useDispatch();
   const reg_id = useSelector(
     state => state.operation?.temp_regid,
@@ -139,9 +139,9 @@ export default function CheckCoverageArea() {
 
   return (
     <>
-      <ActionBar txt={"Registration"} progress={2 / 7} onPress={() => {
+      <ActionBar txt={"Registration"} progress={2 / 7} onPress={() => 
         navigation.goBack()
-      }}></ActionBar>
+      }></ActionBar>
       <ScrollView
         showsVerticalScrollIndicator={false}
         overScrollMode="never"
