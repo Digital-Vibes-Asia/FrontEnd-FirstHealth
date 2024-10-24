@@ -1,4 +1,11 @@
-import { View, StyleSheet, ScrollView, Alert, Dimensions, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  Dimensions,
+  Image,
+} from "react-native";
 import { useEffect, useState, useReducer } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -174,6 +181,16 @@ export default function LoginScreen({ route }) {
             navigation.navigate("start");
           }}
         ></ActionBar>
+        <View style={styles.footerContainer}>
+          <Image
+            source={require("../../assets/images/footer_v1.png")}
+            style={styles.footerImage}
+          />
+          <Image
+            source={require("../../assets/images/footer_v2.png")}
+            style={styles.footerImage}
+          />
+        </View>
 
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -255,16 +272,6 @@ export default function LoginScreen({ route }) {
         </ScrollView>
         {/* <BackgorundWave width={"100%"} height={"20%"}></BackgorundWave> */}
       </View>
-      <View style={styles.footerContainer}>
-        <Image
-          source={require("../../assets/images/footer_v1.png")}
-          style={styles.footerImage}
-        />
-        <Image
-          source={require("../../assets/images/footer_v2.png")}
-          style={styles.footerImage}
-        />
-      </View>
 
       {/* <>
       
@@ -289,8 +296,8 @@ const styles = StyleSheet.create({
   footerImage: {
     width: CustomDimensions.screenWidth,
     position: "absolute",
-    bottom: 0
-},
+    bottom: 0,
+  },
   alertcontainer: { marginTop: "10%", marginHorizontal: "5%" },
   logocontainer: { marginTop: "10%" },
   margin_5: {

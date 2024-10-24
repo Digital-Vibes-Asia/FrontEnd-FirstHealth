@@ -32,6 +32,8 @@ export default function ManualRegisterTwo({ route }) {
   const navigation = useNavigation();
   const setRedux = useDispatch();
 
+  console.log(JSON.stringify(route) + " Route...")
+
   const type = useSelector((state) => state.operation?.type);
 
   const dependant_type = route?.params?.depen_type;
@@ -205,6 +207,8 @@ export default function ManualRegisterTwo({ route }) {
       heart_problems: formState.heart_prblm ? 1 : 0,
       diabetes: formState.d_prblm ? 1 : 0,
       allergic: formState.a_prblm ? 1 : 0,
+      passport_no: route?.params?.data?.ps_num,
+      are_u_foreigner: route?.params?.data?.foreigner ? 0 : 1,
     };
     if (formState.a_prblm) {
       jsonbody.allergic_medication_list = formState.alergics;

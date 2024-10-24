@@ -35,7 +35,7 @@ const PIReducer = (state, action) => {
 };
 
 export default function ManualRegisterOne({ route }) {
-  const [race,setRace] = useState(false)
+  const [race, setRace] = useState(false)
   const reg_id = route?.params?.id;
   const type = route?.params?.type;
   const navigation = useNavigation();
@@ -44,12 +44,12 @@ export default function ManualRegisterOne({ route }) {
   const { data, error, refetch } = route?.params?.id
     ? useGetQuery(UrlBase.DEPENDANT_DETAILS + route?.params?.id)
     : {
-        data: null,
-        error: null,
-        isLoading: false,
-        isSuccess: false,
-        refetch: () => {},
-      };
+      data: null,
+      error: null,
+      isLoading: false,
+      isSuccess: false,
+      refetch: () => { },
+    };
   // const { data, error, refetch } = useGetQuery(UrlBase.DEPENDANT_DETAILS + reg_id);
 
   useEffect(() => {
@@ -57,7 +57,8 @@ export default function ManualRegisterOne({ route }) {
       handleChange({
         f_name: data?.data?.first_name,
         l_name: data?.data?.last_name,
-        ic_num: data?.data?.ic_number,
+        ic_num: data?.data?.ic_number + "",
+        ps_num: data?.data?.passport_no + "",
         race: data?.data?.race,
         dob: data?.data?.dob,
         ph_num: data?.data?.phone_number,
@@ -65,6 +66,8 @@ export default function ManualRegisterOne({ route }) {
         nationality: data?.data?.nationality,
         male: data?.data?.gender == 0,
         female: data?.data?.gender == 1,
+        foreigner_e: data?.data?.are_u_foreigner == 1,
+        non_foreigner: data?.data?.are_u_foreigner == 0,
         isOthers: !RaceValue.some((ele) => ele.value == (data?.data?.race)),
       });
     }
@@ -75,6 +78,7 @@ export default function ManualRegisterOne({ route }) {
     f_name: "",
     l_name: "",
     ic_num: "",
+    ps_num: "",
     race: "",
     dob: "",
     ph_num: "",
@@ -84,17 +88,21 @@ export default function ManualRegisterOne({ route }) {
     fn_e: false,
     ln_e: false,
     ic_num_e: false,
+    ps_num_e: false,
     ph_num_e: false,
     mail_e: false,
     dob_e: false,
     gender_e: false,
+    foreigner_e: false,
     date_picker: false,
     progressBar: false,
     male: false,
     female: false,
+    foreigner: false,
+    non_foreigner: false,
     race_e: false,
     nationality_e: false,
-    isOthers: false,
+    isOthers: false
   });
 
   const handleChange = (fields) => {
@@ -133,18 +141,43 @@ export default function ManualRegisterOne({ route }) {
     }
   }
 
+  function f_toggle(id) {
+    switch (id) {
+      case 1:
+        handleChange({ foreigner: true, non_foreigner: false });
+        break
+      case 2:
+        handleChange({ foreigner: false, non_foreigner: true });
+        break
+    }
+
+  }
+
   function validation() {
-    if (
-      formState.f_name != "" &&
-      formState.l_name != "" &&
+
+    if (formState.f_name != "" && formState.l_name != "" &&
       formState.dob != "" &&
-      formState.ic_num != "" &&
-      formState.mail != "" &&
-      formState.ph_num != "" &&
-      formState.race != "" &&
-      formState.nationality != "" &&
-      (formState.male || formState.female)
+      formState.mail != "" && formState.ph_num != "" && formState.race != ""
+      && formState.nationality != "" && (formState.male || formState.female)
     ) {
+
+      if (formState.non_foreigner && formState.ic_num == "") {
+        handleChange({ ic_num_e: true });
+        return
+      }
+      else {
+        handleChange({ ic_num_e: false });
+      }
+
+      if (formState.foreigner && formState.ps_num.length < 6) {
+        handleChange({ ps_num_e: true });
+        return
+      }
+      else {
+        handleChange({ ps_num_e: false });
+
+      }
+
       // handleChange({ progressBar: true });
       navigation.navigate("mrtwo", {
         data: formState,
@@ -290,17 +323,37 @@ export default function ManualRegisterOne({ route }) {
                 handleChange({ ph_num: param });
               }}
             ></NumberInputBox>
-            <NumberInputBox
-              error={formState.ic_num_e}
-              madatory={true}
-              title={"IC No/Passport No"}
-              desc={"Please enter your IC No./Passport No"}
-              hint={"Your IC No./Passport No"}
-              value={formState.ic_num + ""}
-              onChangeText={(param) => {
-                handleChange({ ic_num: param });
-              }}
-            ></NumberInputBox>
+            <GenderPick error={formState.foreigner_e}
+              variable={"Yes"}
+              variable2={"No"}
+              madatory={true} title={"Are you a foreigner?"}
+              desc={"Please choose"}
+              value={formState.foreigner} value2={formState.non_foreigner}
+              toggle={f_toggle}></GenderPick>
+            {formState?.non_foreigner &&
+              <NumberInputBox error={formState.ic_num_e}
+                madatory={true}
+                maxlen={12}
+                title={"IC No."}
+                desc={"Please enter your IC No"}
+                hint={"Your IC No"} value={formState.ic_num}
+                onChangeText={(param) => {
+                  handleChange({ ic_num: param });
+                }}></NumberInputBox>
+            }
+            {formState?.foreigner &&
+              < NameInputBox error={formState.ps_num_e}
+                madatory={true}
+                title={"Passport No."}
+                desc={"Please enter your valid Passport No."}
+                hint={"Your Passport No."} value={formState.ps_num}
+                onChangeText={(param) => {
+                  handleChange({ ps_num: param });
+                }}></NameInputBox>
+            }
+
+
+
             <FhCallendarBox
               error={formState.dob_e}
               madatory={true}
@@ -313,14 +366,14 @@ export default function ManualRegisterOne({ route }) {
               }}
             ></FhCallendarBox>
 
-{formState.isOthers ? (
+            {formState.isOthers ? (
               <NameInputBox
                 error={formState.race_e}
                 madatory={true}
                 title={"Race"}
                 desc={"Please enter your Race"}
                 hint={"Your Race"}
-                value={formState.race == "others" ? "" :  formState.race}
+                value={formState.race == "others" ? "" : formState.race}
                 onChangeText={(param) => {
                   handleChange({ race: param, isOthers: true });
                 }}
@@ -329,7 +382,7 @@ export default function ManualRegisterOne({ route }) {
               <Text style={styles.titletxt}>Race <Text style={[styles.titletxt, { color: CustomColors.error_red }]}>*</Text> </Text>
 
             )}
-            
+
             <FhDropDown
               hint={"Country"}
               value={
