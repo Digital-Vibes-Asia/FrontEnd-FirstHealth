@@ -12,6 +12,8 @@ import ThemeSuccessText from "../../common/TittleBox/themesuccesstxt";
 import SSimpleText from "../../common/TittleBox/ssimpletxt";
 import SmallText from "../../common/TittleBox/smalltext";
 import { horizontalScale } from "../../utils/common/Metrics";
+import { usePostMutation } from "../../store/api";
+import { UrlBase } from "../../utils/common/urlbase";
 
 const StartReducer = (state, action) => {
   switch (action.type) {
@@ -26,6 +28,10 @@ export default function SubsSuccess({ route }) {
   const token = useSelector(
     (state) => state.operation.authentication?.access_token
   );
+  
+  const {slotCart} = useSelector(state => state.operation);
+  const [paymentSuccess, { data: successData, error: successError }] = usePostMutation();
+
 
   const navigation = useNavigation();
   const setRedux = useDispatch();
@@ -41,6 +47,14 @@ export default function SubsSuccess({ route }) {
   const handleChange = (fields) => {
     dispatch({ type: "SET_FIELD", fields });
   };
+
+  useEffect(()=> {
+    paymentSuccess({data: slotCart, url: UrlBase.ADDMEM_SUCCESS})
+  },[slotCart])
+
+  useEffect(()=>{
+    console.log(successData,'successData 77')
+  },[successData])
 
   return (
     <>

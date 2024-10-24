@@ -52,7 +52,7 @@ export default function SubscriptionPlans({ route }) {
   useEffect(() => {
     GetPlan({
       data: {
-        user_id: 3,
+        user_id: reg_id,
       },
       url: UrlBase.GETPLAN,
     });

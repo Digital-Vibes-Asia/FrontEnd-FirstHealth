@@ -22,6 +22,7 @@ const initialState = {
   rs: 0,
   fcm_token: "",
   slotsCount: {},
+  slotCart: {}
 };
 
 const App = createSlice({
@@ -54,6 +55,9 @@ const App = createSlice({
     },
     step3Red: (state, action) => {
       state.step3Data = action?.payload;
+    },
+    addSlotCart:(state,action)=> {
+      state.slotCart = action?.payload
     },
     clear: (state, action) => {
       state.drawyer = false;
@@ -147,6 +151,7 @@ export const {
   settype,
   setfcm,
   setSlotsCount,
+  addSlotCart
 } = App.actions;
 
 export default App.reducer;

@@ -24,6 +24,7 @@ import { usePostMutation } from "../../store/api";
 
 export default function FreeUserScreen({ subsData }) {
   const [isError, setError] = useState(false);
+  const [refError,setRefError] = useState("")
   const rmAmount = subsData?.user_subscription?.subscription_master?.price;
   const otherBenefits =
     subsData?.user_subscription?.subscription_master?.benefits;
@@ -64,31 +65,37 @@ export default function FreeUserScreen({ subsData }) {
   }
 
   useEffect(() => {
-    if (data) {
-      if (!data?.is_valid) {
-        navigation.navigate("subp");
-      } else {
-        if (data?.eligible_plans.length > 0) {
-          setError(false);
-          navigation.navigate("exp", {
-            screen: "freeUser",
-            refer_id: formState?.referral,
-            age_group: data?.age_group,
-          });
+    console.log(data,error,"join plan dataerror")
+    if(data?.status == "error"){
+      setRefError(data?.message)
+    }else{
+      if (data) {
+        if (!data?.is_valid) {
+          navigation.navigate("subp");
         } else {
-          navigation.navigate("ns", {
-            plan: data?.subscription_plan,
-          });
+          if (data?.eligible_plans.length > 0) {
+            setError(false);
+            navigation.navigate("exp", {
+              screen: "freeUser",
+              refer_id: formState?.referral,
+              age_group: data?.age_group,
+            });
+          } else {
+            navigation.navigate("ns", {
+              plan: data?.subscription_plan,
+            });
+          }
         }
+      } else if (error) {
+        // navigation.navigate("subp")
+        Alert.alert(
+          JSON.stringify(error?.status),
+          JSON.stringify(error?.data?.message)
+        );
       }
-    } else if (error) {
-      // navigation.navigate("subp")
-      Alert.alert(
-        JSON.stringify(error?.status),
-        JSON.stringify(error?.data?.message)
-      );
+      handleChange({ progressBar: false });
     }
-    handleChange({ progressBar: false });
+  
   }, [data, error]);
 
   return (
@@ -166,14 +173,12 @@ export default function FreeUserScreen({ subsData }) {
               hint={"FH123456"}
               value={formState.referral}
               onChangeText={(param) => {
+                if(param=="") setRefError("")
                 handleChange({ referral: param });
               }}
+              error={refError!=""||isError}
+              desc={refError != "" ?refError: "Enter Valid Referral ID"}
             ></NameInputBox>
-            {isError && (
-              <Text style={[styles.desctxt, { color: CustomColors.red }]}>
-                Enter Valid Referral ID
-              </Text>
-            )}
           </View>
           <View style={{ width: "100%", padding: 20, paddingTop: 0 }}>
             <JoinPlanButton

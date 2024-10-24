@@ -67,6 +67,7 @@ const MyActivity = () => {
           <Divider text={moment(dateKey).format('MMMM Do YYYY')} />
           {categorizedActivities[dateKey].map((act, actIndex) => {
             const { activity, user } = act;
+            console.log(activity,"bsjsbisjs")
             return (
               <View
                 key={actIndex}
@@ -74,7 +75,7 @@ const MyActivity = () => {
               >
                 <ActivityCard
                   headText={activity?.activity}
-                  subHead={moment(activity?.created_at).format('h:mm A')}
+                  subHead={moment(activity?.activity_date).format('h:mm A')}
                   desc={user?.name}
                   id={activity?.activity_id}
                 />

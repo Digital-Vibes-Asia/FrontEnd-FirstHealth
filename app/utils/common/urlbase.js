@@ -36,9 +36,8 @@ export const UrlBase = {
   RENEW_USER: "FH/public/api/renewSlot",
   REVOKEINVITE: "FH/public/api/dependant/revoke/",
   REMOVEMANUALUSER: "FH/public/api/ManualRemove",
-
-
   CHECK_COVER: "FH/public/api/get-nearby-locations",
   FORGOT_PASSWORD: "FH/public/api/forgotPassword",
   RESET_PASSWORD: "FH/public/api/resetpassword",
+  ADDMEM_SUCCESS: "FH/public/api/slotUpdate"
 };

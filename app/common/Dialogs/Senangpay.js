@@ -25,7 +25,8 @@ const SenangPayPayment = ({ route }) => {
   };
 
   const apiHit = async (data) => {
-    const response = await axios.post(baseurl, data);
+    console.log(data, "urldatadata")
+    // const response = await axios.post(baseurl, data);
     // const result = await response.text();
     // Linking.openURL(result);
     const urlData = `${baseurl}?detail=${data?.detail}&amount=${data?.amount}&name=${data?.name}&email=${data?.email}&phone=${data?.phone}&order_id=${data?.order_id}&hash=${data?.hash}`;

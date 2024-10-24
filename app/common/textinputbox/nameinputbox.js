@@ -13,15 +13,15 @@ export default function NameInputBox({ hint, onChangeText, value, title, desc, e
         <TextInput
           style={[
             styles.textinput, 
-            { borderColor: isFocused ? '#5525A5' : CustomColors.neutral_200, borderWidth: isFocused? moderateScale(2):moderateScale(1) } // Change border color on focus
+            { borderColor: error? CustomColors.error_red:  isFocused ? '#5525A5' : CustomColors.neutral_200, borderWidth: isFocused? moderateScale(2):moderateScale(1) } // Change border color on focus
           ]}
           placeholder={hint}
           value={value}
           inputMode={"text"}
           placeholderTextColor={CustomColors.neutral_400}
           onChangeText={onChangeText}
-          onFocus={() => setIsFocused(true)}   // Set focus state to true
-          onBlur={() => setIsFocused(false)}   // Set focus state to false
+          onFocus={() => setIsFocused(true)}  
+          onBlur={() => setIsFocused(false)}   
         />
         {error &&
           <Text style={[styles.desctxt, { color: error ? CustomColors.red : CustomColors.lighttheme }]}>{desc}</Text>

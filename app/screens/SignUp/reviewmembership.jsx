@@ -40,6 +40,7 @@ import { UrlBase } from "../../utils/common/urlbase";
 import Progressing from "../../common/Progress/Progressing";
 import { ProgressBar } from "react-native-paper";
 import { usePostMutation } from "../../store/api";
+import { addSlotCart } from "../../store/value";
 
 const PIReducer = (state, action) => {
   switch (action.type) {
@@ -73,7 +74,6 @@ export default function ReviewMembership({ route }) {
   const reg_id = useSelector((state) => state.operation?.temp_regid);
 
   const temp_data = useSelector((state) => state.operation?.temp_data);
-
   const [pay, { data: paydata, error: payerror }] = usePostMutation();
 
   // useEffect(() => {
@@ -97,7 +97,7 @@ export default function ReviewMembership({ route }) {
   useEffect(() => {
     if (paydata) {
       // Alert.alert("Success")
-      console.log(paydata + "Ssss Data....")
+      console.log(paydata , "Ssss Data....")
       const detail = (paydata?.data?.detail);
       const email = paydata?.data?.email;
       const phone = paydata?.data?.phone;
@@ -110,6 +110,7 @@ export default function ReviewMembership({ route }) {
       // console.log(urlData, "paymentUrl");
       // setPaymentHit(urlData);
     } else if (payerror) {
+      console.log(payerror,"payerror shshs")
       Alert.alert(
         JSON.stringify(payerror?.status),
         JSON.stringify(payerror?.data?.message),
@@ -186,13 +187,24 @@ export default function ReviewMembership({ route }) {
       }
     });
 
+    const data = {
+      user_id: reg_id,
+      subscription_id: formState?.getdata?.id,
+      child_count: child_count,
+      senior_count: senior_count,
+      adult_count: adult_count,
+    }
+
+    setRedux(addSlotCart(data))
+    console.log(data,"Test suhs")
     pay({
       data: {
         user_id: reg_id,
         subscription_id: formState?.getdata?.id,
-        child_count: child_count,
-        senior_count: senior_count,
-        adult_count: adult_count,
+        // child_count: child_count,
+        // senior_count: senior_count,
+        // adult_count: adult_count,
+        amount: formState.total
       },
       url: UrlBase.STEP6,
     });
