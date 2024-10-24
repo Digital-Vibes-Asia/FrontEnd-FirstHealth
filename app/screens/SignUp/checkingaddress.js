@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {GOOGLE_API_KEY} from "@env";
 
 const CheckingAddress = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -20,7 +21,7 @@ const CheckingAddress = () => {
           setSelectedPlace(details);
         }}
         query={{
-          key: 'AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4',
+          key: GOOGLE_API_KEY,
           language: 'en',
         }}
         styles={{

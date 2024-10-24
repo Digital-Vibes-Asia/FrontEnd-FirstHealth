@@ -19,7 +19,7 @@ import { CustomColors } from '../../utils/common/CustomStyles';
 import Ambulance from "../../assets/icon/ambulancepin.svg"
 import Userpin from "../../assets/icon/userpin.svg"
 import { CustomDimensions, CustomFontSize } from '../../utils/common/CustomStyles';
-
+import {GOOGLE_API_KEY} from "@env";
 import AmbulanceCard from '../common/Card/ambulancecard';
 
 
@@ -116,7 +116,7 @@ export default function DirectionScreen({ route }) {
           <MapViewDirections
             origin={origin}
             destination={destination}
-            apikey={"AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4"}
+            apikey={GOOGLE_API_KEY}
             strokeWidth={3}
             onReady={(result) => {
               handleChange({ arr_time: calculateArrivalTime(result?.duration) })

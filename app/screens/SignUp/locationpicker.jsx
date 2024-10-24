@@ -12,6 +12,7 @@ import CheckCoverageButton from '../../common/Button/checkcoveragebutton';
 import RegisterButton from '../../common/Button/registerbutton';
 import ActionBar from '../../common/ActionBar/actionbar';
 import { useNavigation } from '@react-navigation/native';
+import {GOOGLE_API_KEY} from "@env";
 
 
 
@@ -207,7 +208,7 @@ const LocationPicker = ({ onLocationSelect, next }) => {
                         }}
 
                         query={{
-                            key: 'AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4', // Replace with your API Key
+                            key: GOOGLE_API_KEY, // Replace with your API Key
                             language: 'en',
                             // components: 'country:my',
                         }}

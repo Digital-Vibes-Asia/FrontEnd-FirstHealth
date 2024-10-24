@@ -9,8 +9,9 @@ import { UrlBase } from '../../utils/common/urlbase';
 import Geocoder from 'react-native-geocoding';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import {GOOGLE_API_KEY} from "@env";
 
-Geocoder.init('AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4');
+Geocoder.init(GOOGLE_API_KEY);
 
 
 const PIReducer = (state, action) => {

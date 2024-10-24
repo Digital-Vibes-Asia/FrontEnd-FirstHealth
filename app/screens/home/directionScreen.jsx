@@ -23,7 +23,8 @@ import AAActionBar from '../../common/ActionBar/aaactionbar';
 import FocusButton from '../../common/Button/focusbutton';
 import CancelAmbulance from '../../common/Dialogs/cancelAmbulance';
 import ScheduleAmbulanceBox from '../../common/ActionBar/scheduleAmbulanceBox';
-import PatientDetailsCard from '../../common/Card/patientDetailsCard';
+import {GOOGLE_API_KEY} from "@env";
+
 
 import Focus from "../../assets/icon/focusicon.svg"
 
@@ -132,7 +133,7 @@ export default function DirectionScreen({ route }) {
               origin={formState.origin}
               mode={"DRIVING"}
               destination={formState.destination}
-              apikey={"AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4"}
+              apikey={GOOGLE_API_KEY}
               strokeWidth={3}
               onReady={(result) => {
                 handleChange({ arr_time: calculateArrivalTime(result?.duration) })

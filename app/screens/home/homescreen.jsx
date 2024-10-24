@@ -8,7 +8,7 @@ import MapView, { Marker, Polyline, Circle } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import CallButton from '../../common/Button/callbutton';
 import { horizontalScale, verticalScale } from '../../utils/common/Metrics';
-
+import {GOOGLE_API_KEY} from "@env";
 import AreYouSureButton from '../../common/Button/areyousurebutton';
 import FocusButton from '../../common/Button/focusbutton';
 import ScheduledCard from '../../common/Card/scheduledCard';
@@ -32,7 +32,7 @@ const SPReducer = (state, action) => {
 export default function HomeScreen({ route }) {
   const navigation = useNavigation();
   const setRedux = useDispatch();
-  const GOOGLE_PLACES_API_KEY = 'AIzaSyB0pWBVeA3Up7VSeKkykdz23gT2aAqhso4';
+  const GOOGLE_PLACES_API_KEY = GOOGLE_API_KEY;
 
   const mapRef = useRef(null);
 
@@ -105,7 +105,7 @@ export default function HomeScreen({ route }) {
 
   const handleFocus = () => {
     if (mapRef.current) {
-      mapRef.current.animateToRegion(formState.location, 1000); // Focus on the location over 1 second
+      mapRef.current?.animateToRegion(formState.location, 1000); // Focus on the location over 1 second
     }
   };
 
@@ -324,7 +324,7 @@ export default function HomeScreen({ route }) {
         <MapView
           style={styles.mapStyle}
           ref={mapRef}
-          initialRegion={formState.location}
+          initialRegion={formState?.location}
         >
           <Marker
             draggable
