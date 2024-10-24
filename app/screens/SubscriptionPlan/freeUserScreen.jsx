@@ -13,20 +13,23 @@ import MemButton from "../../common/Button/MemButton";
 import NameInputBox from "../../common/textinputbox/nameinputbox";
 import JoinPlanButton from "../../common/Button/joinPlanButton";
 import ActionBoxDependent from "../../common/ActionBoxDependent/ActionBoxDependent";
-import { horizontalScale, moderateScale, verticalScale } from "../../utils/common/Metrics";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "../../utils/common/Metrics";
 import { UrlBase } from "../../utils/common/urlbase";
 import { useSelector } from "react-redux";
 import { usePostMutation } from "../../store/api";
 
 export default function FreeUserScreen({ subsData }) {
-
   const [isError, setError] = useState(false);
   const rmAmount = subsData?.user_subscription?.subscription_master?.price;
   const otherBenefits =
     subsData?.user_subscription?.subscription_master?.benefits;
   const plan = subsData?.user_subscription?.subscription_master?.plan;
   const name = subsData?.user_subscription?.name;
-  const user_id = subsData?.user_subscription?.user_id
+  const user_id = subsData?.user_subscription?.user_id;
 
   const navigation = useNavigation();
 
@@ -51,15 +54,14 @@ export default function FreeUserScreen({ subsData }) {
   };
 
   function validation() {
-      step5({
-        data: {
-          referral_number: formState.referral,
-          id: user_id,
-        },
-        url: UrlBase.STEP5,
-      });
+    step5({
+      data: {
+        referral_number: formState.referral,
+        id: user_id,
+      },
+      url: UrlBase.STEP5,
+    });
   }
-
 
   useEffect(() => {
     if (data) {
@@ -67,11 +69,11 @@ export default function FreeUserScreen({ subsData }) {
         navigation.navigate("subp");
       } else {
         if (data?.eligible_plans.length > 0) {
-          setError(false)
+          setError(false);
           navigation.navigate("exp", {
             screen: "freeUser",
             refer_id: formState?.referral,
-            age_group: data?.age_group
+            age_group: data?.age_group,
           });
         } else {
           navigation.navigate("ns", {
@@ -107,7 +109,7 @@ export default function FreeUserScreen({ subsData }) {
           style={{
             width: "100%",
             alignItems: "center",
-            paddingTop: 20,
+            paddingTop: moderateScale(20),
           }}
         >
           <View style={styles.proCard}>
@@ -115,6 +117,7 @@ export default function FreeUserScreen({ subsData }) {
             <Text style={styles.txt}>Free Membership</Text>
             <Text style={styles.NumTxt}>RM{rmAmount}</Text>
             <Text style={styles.txtPay}>And pay direct later</Text>
+
             <Separator />
 
             {otherBenefits?.map((item, index) => (
@@ -155,8 +158,8 @@ export default function FreeUserScreen({ subsData }) {
           <View
             style={{
               width: "100%",
-              padding: verticalScale(20),
-              paddingTop: verticalScale(0),
+              paddingHorizontal: moderateScale(20),
+              paddingBottom: moderateScale(10),
             }}
           >
             <NameInputBox
@@ -200,8 +203,8 @@ const styles = StyleSheet.create({
     shadowRadius: 8, // Blur radius
     // Android shadow properties
     elevation: 4, // Elevation level (can be adjusted)l
-    gap: 8,
-    width: '95%',
+    // gap: 8,
+    width: "95%",
     // /* Shades/White */
     backgroundColor: "#FFFFFF",
     // /* Neutral/200 */
@@ -212,25 +215,28 @@ const styles = StyleSheet.create({
     // /* Inside auto layout */
     order: 0,
     flexGrow: 0,
-    padding: 20,
+    padding: moderateScale(20),
   },
   txtPay: {
     fontWeight: "400",
     color: CustomColors.neutral_500,
-    fontFamily: CustomFonts.PoppinsMedium,
-    fontSize:CustomFontSize.normal_12,
+    fontFamily: CustomFonts.PoppinsRegular,
+    fontSize: CustomFontSize.normal_12,
+    paddingBottom: verticalScale(15),
   },
 
   txt: {
     fontSize: CustomFontSize.txt_22,
     fontFamily: CustomFonts.PoppinsMedium,
     fontWeight: "500",
-    color:CustomColors.new_titile_clr
+    color: CustomColors.new_titile_clr,
+    paddingTop: verticalScale(5),
   },
   checkTile: {
     alignItems: "center",
     flexDirection: "row",
     width: "100%",
+    paddingTop: verticalScale(15),
   },
   NumTxt: {
     color: CustomColors.new_theme_clr,
@@ -239,8 +245,8 @@ const styles = StyleSheet.create({
     fontFamily: CustomFonts.PoppinsSemiBold,
   },
   emptView: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: moderateScale(30),
+    marginBottom: moderateScale(20),
     borderWidth: 4,
     width: "100%",
     borderColor: CustomColors.neutral_100,
@@ -257,7 +263,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: moderateScale(20),
     paddingTop: moderateScale(10),
-    paddingBottom: 0,
+    paddingBottom: moderateScale(0),
   },
   titTxt: {
     fontFamily: CustomFonts.PoppinsRegular,
@@ -266,10 +272,10 @@ const styles = StyleSheet.create({
     color: CustomColors.neutral_700,
   },
   conTxt: {
-    padding: 20,
-    paddingLeft: 0,
-    paddingTop: verticalScale(15),
-    paddingBottom: 0,
+    padding: moderateScale(20),
+    paddingLeft: moderateScale(0),
+    paddingTop: verticalScale(10),
+    paddingBottom: moderateScale(0),
     color: CustomColors.neutral_700,
     fontFamily: CustomFonts.PoppinsRegular,
     fontWeight: "400",

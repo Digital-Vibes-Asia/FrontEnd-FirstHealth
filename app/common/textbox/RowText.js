@@ -28,7 +28,7 @@ const RowView = ({ title, desc }) => {
         fontFamily: CustomFonts.PoppinsSemiBold,
         // fontWeight: "500",
         fontSize: verticalScale(14),
-        color: CustomColors.neutral_600,
+        color: CustomColors.neutral_700,
         // width: 'fit-content',
         // maxWidth: "75%",
         lineHeight: verticalScale(18),

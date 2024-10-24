@@ -10,7 +10,6 @@ import {
   horizontalScale,
   moderateScale,
 } from "../../utils/common/Metrics";
-import BackButton from "../../assets/icon/backbutton.svg";
 import UserIcon from "../../assets/icon/userIcon.svg";
 import UserIcon2 from "../../assets/icon/avatar.svg";
 import LinearGradient from "react-native-linear-gradient";
@@ -53,7 +52,10 @@ export default function ActionBoxDependent({
                 : moderateScale(status === "inviteAccepted" ? 30 : 10),
           }}
         >
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={{ paddingBottom: moderateScale(20) }}
+          >
             <Backbutton />
           </Pressable>
           <View style={styles.userContent}>
@@ -111,6 +113,7 @@ export default function ActionBoxDependent({
                 width: CustomDimensions.screenWidth,
                 padding: moderateScale(20),
                 paddingBottom: horizontalScale(0),
+                paddingTop: moderateScale("puExpired" ? 5 : 20),
                 alignItems: "center",
               }}
             >
@@ -163,11 +166,10 @@ const styles = StyleSheet.create({
     fontSize: CustomFontSize.normal,
     fontWeight: "400",
     textAlign: "center",
-    top: verticalScale(5),
     color: CustomColors.white,
   },
   userContent: {
-    paddingVertical: verticalScale(20),
+    paddingVertical: verticalScale(5),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   card: {
-    width: moderateScale(328),
+    width: '90%',
     borderWidth: moderateScale(1),
     borderRadius: moderateScale(8),
     borderColor: CustomColors.border_color,

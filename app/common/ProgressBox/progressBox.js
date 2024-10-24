@@ -44,7 +44,7 @@ export default function ProgressBox({ screen, data }) {
               remainEmerCalls={remainEmerCalls}
             />
           </View>
-          <View>
+          <View style={{ paddingBottom: moderateScale(5) }}>
             <Text style={styles.cardTilTxt}>Emergency trips remaining</Text>
             <Text style={styles.cardTxt}>out of {totalEmerCalls} trips</Text>
           </View>

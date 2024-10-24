@@ -40,7 +40,7 @@ export default function ReferralCodeButton({
         >
           <ChainIcon />
           <Text style={styles.button}>
-            {"Linked:"} {refCode}
+            {"LINKED:"} {refCode}
           </Text>
           <Info2 />
         </Pressable>

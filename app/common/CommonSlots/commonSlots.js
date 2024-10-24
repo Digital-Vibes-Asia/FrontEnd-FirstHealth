@@ -52,13 +52,13 @@ export default function CommonSlots({ data, Progressless }) {
               navigation.navigate("dui");
             }}
           >
-            <View style={{ width: "15%" }}>
+            <View style={{ width: "12%" }}>
               <UserIcon />
             </View>
             <View
               style={{
                 marginLeft: horizontalScale(10),
-                width: "55%",
+                width: "58%",
               }}
             >
               {item.reg_id ? null : (

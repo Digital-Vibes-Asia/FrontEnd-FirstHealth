@@ -1,6 +1,7 @@
 import { Pressable, ScrollView, Text, View } from "react-native";
 import {
   CustomColors,
+  CustomDimensions,
   CustomFonts,
   CustomFontSize,
 } from "../../../utils/common/CustomStyles";
@@ -21,7 +22,7 @@ import InfoIcon3 from "../../../assets/icon/infoIcon3.svg";
 import ListPaperIcon from "../../../assets/icon/listPaperIcon.svg";
 import ProgressBox from "../../../common/ProgressBox/progressBox";
 import CommonSlots from "../../../common/CommonSlots/commonSlots";
-import RightArrow from "../../../assets/icon/rightarrow.svg";
+import RightArrow from "../../../assets/icon/rightArrow4.svg";
 import { useEffect, useMemo } from "react";
 import moment from "moment";
 import { useNavigation } from "@react-navigation/native";
@@ -98,21 +99,26 @@ export default function PrincipalUsrQualifyingAndActive({ data }) {
       >
         <ActionBoxDependent
           txt={userName}
-          contentHeight={237}
+          contentHeight={273}
           screen={"puqaa"}
           qualifyingPeriod={qualifyingPeriod}
           qualifyLeft={qualifyLeft}
           planName={planName}
         ></ActionBoxDependent>
         <View style={{ width: "100%" }}>
-          {qualifyingPeriod === true ? (
+          {qualifyingPeriod ? (
             <View style={styles.cardMain}>
               <View
                 style={{ width: "100%", paddingHorizontal: moderateScale(16) }}
               >
                 <View style={styles.card}>
                   <AlertIcon />
-                  <Text style={styles.subsTxt}>
+                  <Text
+                    style={[
+                      styles.subsTxt,
+                      { paddingBottom: moderateScale(10) },
+                    ]}
+                  >
                     Qualifying Period in Progress
                   </Text>
                   <Text style={styles.subsContent}>
@@ -144,7 +150,7 @@ export default function PrincipalUsrQualifyingAndActive({ data }) {
             </View>
           ) : (
             <View style={{ marginHorizontal: moderateScale(16) }}>
-              <View style={{ marginTop: verticalScale(30) }}>
+              <View style={{ marginTop: verticalScale(0) }}>
                 <ProgressBox data={data} />
               </View>
               <CommonDependant qualifyingPeriod={qualifyingPeriod} />
@@ -165,9 +171,18 @@ export default function PrincipalUsrQualifyingAndActive({ data }) {
           )}
           <View style={styles.emptView} />
 
-          <View style={{ width: "100%", padding: moderateScale(20) }}>
+          <View
+            style={{
+              width: "100%",
+              padding: moderateScale(20),
+              paddingBottom: moderateScale(5),
+            }}
+          >
             <View style={styles.listHead}>
-              <ListPaperIcon />
+              <ListPaperIcon
+                width={CustomDimensions.icon_width_20}
+                height={CustomDimensions.icon_height_20}
+              />
               <Text style={styles.listHeadTitle}>Subscription Information</Text>
             </View>
             <RowView
@@ -189,7 +204,10 @@ export default function PrincipalUsrQualifyingAndActive({ data }) {
           <View style={styles.emptView} />
           <View style={{ width: "100%", padding: moderateScale(20) }}>
             <View style={styles.listHead}>
-              <ListIcon />
+              <ListIcon
+                width={CustomDimensions.icon_width_20}
+                height={CustomDimensions.icon_height_20}
+              />
               <Text style={styles.listHeadTitle}>Membership Benefits</Text>
             </View>
             <View style={[styles.subsDetails, { justifyContent: "" }]}>
@@ -284,7 +302,7 @@ const styles = StyleSheet.create({
   },
   listHead: {
     flexDirection: "row",
-    paddingBottom: verticalScale(10),
+    paddingBottom: verticalScale(5),
     alignItems: "center",
   },
   listHeadTitle: {

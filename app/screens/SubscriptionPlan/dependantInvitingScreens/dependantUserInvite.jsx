@@ -1,6 +1,7 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
   CustomColors,
+  CustomDimensions,
   CustomFonts,
   CustomFontSize,
 } from "../../../utils/common/CustomStyles";
@@ -9,7 +10,7 @@ import {
   moderateScale,
   verticalScale,
 } from "../../../utils/common/Metrics";
-import RightArrow from "../../../assets/icon/rightarrow.svg";
+import RightArrow from "../../../assets/icon/rightArrow4.svg";
 import UserIcon from "../../../assets/icon/User.svg";
 import ExpandButton from "../../../common/Button/expandButton";
 import RemoveButton from "../../../common/Button/removeButton";
@@ -86,10 +87,6 @@ export default function DependantUserInvite() {
         <View
           style={[styles.depenContent, { paddingBottom: verticalScale(10) }]}
         >
-          {/* <View style={styles.depenContent}>
-            <UserIcon />
-            <Text style={styles.listHeadTitle}>Dependant Information</Text>
-          </View> */}
           <TitleContain
             subTitle={"Dependant Information"}
             isEditable={status == "manualReg"}
@@ -100,29 +97,8 @@ export default function DependantUserInvite() {
               })
             }
           />
-          {/* {status === "manualReg" ? (
-            <Pressable
-              style={styles.depenContent}
-              onPress={() =>
-                navigation.navigate("mr", {
-                  id: data?.reg_id,
-                  type: data?.type_dependant,
-                })
-              }
-            >
-              <Text
-                style={[
-                  styles.editTxt,
-                  { paddingHorizontal: horizontalScale(5) },
-                ]}
-              >
-                Edit
-              </Text>
-              <EditIcon />
-            </Pressable>
-          ) : null} */}
         </View>
-        <View style={{ paddingHorizontal: moderateScale(12) }}>
+        <View style={{ paddingHorizontal: moderateScale(10) }}>
           <RowView title={"Membership ID"} desc={referralNo} />
           <RowView
             title={"Membership Type"}
@@ -216,7 +192,7 @@ export default function DependantUserInvite() {
             ></ActionBoxDependent>
             {data?.is_plan_expired ? (
               <View
-                style={[styles.cardMain, { paddingBottom: verticalScale(20) }]}
+                style={[styles.cardMain, { paddingBottom: verticalScale(25) }]}
               >
                 <View
                   style={{
@@ -249,8 +225,8 @@ export default function DependantUserInvite() {
               </View>
             ) : (
               <>
-                <View style={{ width: "100%", alignItems: "center" }}>
-                  <View>
+                <View style={{ width: "95%", alignItems: "center" }}>
+                  <View style={{ paddingTop: moderateScale(10) }}>
                     <ProgressBox data={data} />
                   </View>
                   <View
@@ -276,7 +252,10 @@ export default function DependantUserInvite() {
             />
             <View style={styles.emptView} />
             <View style={[styles.bottomContent, { width: "100%" }]}>
-              <UserCancelIcon />
+              <UserIcon
+                width={CustomDimensions.icon_width_20}
+                height={CustomDimensions.icon_height_20}
+              />
               <Text style={styles.listHeadTitle}> Remove Dependant</Text>
             </View>
             <Text
@@ -310,7 +289,10 @@ export default function DependantUserInvite() {
             <View style={[styles.emptView, { marginTop: verticalScale(20) }]} />
             <View>
               <View style={styles.bottomContent}>
-                <UserCancelIcon />
+                <UserCancelIcon
+                  width={CustomDimensions.icon_width_20}
+                  height={CustomDimensions.icon_height_20}
+                />
                 <Text style={styles.listHeadTitle}>Revoke Email Invite</Text>
               </View>
               <Text
@@ -457,14 +439,13 @@ const styles = StyleSheet.create({
     color: CustomColors.new_theme_clr,
   },
   membDetails: {
-    width: "100%",
+    width: "95%",
     // padding: moderateScale(20),
-    paddingBottom: moderateScale(10),
+    paddingBottom: moderateScale(15),
   },
   cardMain: {
     width: "100%",
     alignItems: "center",
-    paddingTop: verticalScale(20),
   },
   card: {
     width: "100%",

@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import {
   CustomColors,
+  CustomDimensions,
   CustomFontSize,
   CustomFonts,
 } from "../../../utils/common/CustomStyles";
 import { ScrollView } from "react-native";
 import ProgressBox from "../../../common/ProgressBox/progressBox";
-import RightArrow from "../../../assets/icon/rightarrow.svg";
+import RightArrow from "../../../assets/icon/rightArrow4.svg";
 import ListPaperIcon from "../../../assets/icon/listPaperIcon.svg";
 import ListIcon from "../../../assets/icon/menu.svg";
 import CheckBoxIcon2 from "../../../assets/icon/check_circle.svg";
@@ -81,7 +82,10 @@ export default function SubscriptionDependantUser({ data, fetching }) {
 
         <View style={{ width: "100%", padding: 20 }}>
           <View style={styles.listHead}>
-            <ListPaperIcon />
+            <ListPaperIcon
+              width={CustomDimensions.icon_width_20}
+              height={CustomDimensions.icon_height_20}
+            />
             <Text style={styles.listHeadTitle}>Subscription Information</Text>
           </View>
           <View style={styles.subsDetails}>
@@ -102,7 +106,10 @@ export default function SubscriptionDependantUser({ data, fetching }) {
         <View style={styles.emptView} />
         <View style={{ width: "100%", padding: 20 }}>
           <View style={styles.listHead}>
-            <ListIcon />
+            <ListIcon
+              width={CustomDimensions.icon_width_20}
+              height={CustomDimensions.icon_height_20}
+            />
             <Text style={styles.listHeadTitle}>Membership Benefits</Text>
           </View>
           <View style={[styles.subsDetails, { justifyContent: "" }]}>
@@ -157,58 +164,58 @@ export default function SubscriptionDependantUser({ data, fetching }) {
           contentHeight={isDependent ? 313 : 353}
         ></ActionBoxDependent>
         {isRemoved ? (
-        <View style={styles.cardMain}>
-          <View style={styles.card}>
-            <AlertIcon />
-            <Text style={styles.subsTxt}>Membership Change</Text>
-            <Text style={styles.subsContent}>
-              You have been removed from your primary user’s plan and have been
-              moved to a{" "}
-              <Text style={[styles.subsContent, { fontWeight: "600" }]}>
-                {" "}
-                Free Membership Plan.
+          <View style={styles.cardMain}>
+            <View style={styles.card}>
+              <AlertIcon />
+              <Text style={styles.subsTxt}>Membership Change</Text>
+              <Text style={styles.subsContent}>
+                You have been removed from your primary user’s plan and have
+                been moved to a{" "}
+                <Text style={[styles.subsContent, { fontWeight: "600" }]}>
+                  {" "}
+                  Free Membership Plan.
+                </Text>
               </Text>
-            </Text>
 
-            <Text
-              style={[
-                styles.subsContent,
-                { paddingVertical: verticalScale(10) },
-              ]}
-            >
-              For continued access to benefits, please subscribe to a new plan
-              or contact our{" "}
               <Text
                 style={[
                   styles.subsContent,
-                  { color: CustomColors.new_theme_clr },
+                  { paddingVertical: verticalScale(10) },
                 ]}
               >
-                {" "}
-                First Health Customer Service{" "}
+                For continued access to benefits, please subscribe to a new plan
+                or contact our{" "}
+                <Text
+                  style={[
+                    styles.subsContent,
+                    { color: CustomColors.new_theme_clr },
+                  ]}
+                >
+                  {" "}
+                  First Health Customer Service{" "}
+                </Text>
+                for more information.
               </Text>
-              for more information.
-            </Text>
 
-            <View style={{ marginTop: "5%", width: "100%" }}>
-              <MemButton
-                value={"Upgrade Plan"}
-                onPress={() => {
-                  navigation.navigate("subp", { screen: "dependantUser" });
-                }}
-              ></MemButton>
-            </View>
+              <View style={{ marginTop: "5%", width: "100%" }}>
+                <MemButton
+                  value={"Upgrade Plan"}
+                  onPress={() => {
+                    navigation.navigate("subp", { screen: "dependantUser" });
+                  }}
+                ></MemButton>
+              </View>
 
-            <View style={{ marginTop: "5%", width: "100%" }}>
-              <DowngradeButton
-                value={"Downgrade to Free Plan"}
-                onPress={() => {
-                  setVisible(!visible);
-                }}
-              ></DowngradeButton>
+              <View style={{ marginTop: "5%", width: "100%" }}>
+                <DowngradeButton
+                  value={"Downgrade to Free Plan"}
+                  onPress={() => {
+                    setVisible(!visible);
+                  }}
+                ></DowngradeButton>
+              </View>
             </View>
           </View>
-        </View>
         ) : isPlanExpired ? (
           <View style={styles.cardMain}>
             <View style={styles.card}>
@@ -274,7 +281,9 @@ export default function SubscriptionDependantUser({ data, fetching }) {
           </View>
         ) : (
           <View style={styles.twoBox}>
-            <ProgressBox screen={"subsDependant"} data={data} />
+            <View style={{ width: "92%" }}>
+              <ProgressBox screen={"subsDependant"} data={data} />
+            </View>
             <View style={{ padding: 20 }}>
               <Pressable
                 onPress={() => {
@@ -288,7 +297,7 @@ export default function SubscriptionDependantUser({ data, fetching }) {
             </View>
             <SubscriptionInformations />
           </View>
-        )}  
+        )}
       </ScrollView>
       <DowngradeAlert
         setModalVisible={setVisible}
@@ -331,7 +340,7 @@ const styles = StyleSheet.create({
   },
   listHead: {
     flexDirection: "row",
-    paddingBottom: verticalScale(10),
+    paddingBottom: verticalScale(5),
     alignItems: "center",
   },
   listHeadTitle: {
@@ -372,7 +381,7 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(20),
   },
   card: {
-    width: "95%",
+    width: "90%",
     borderWidth: moderateScale(1),
     borderRadius: moderateScale(8),
     borderColor: CustomColors.neutralgrey_200,
