@@ -106,7 +106,7 @@ export default function CommonSlots({ data, Progressless }) {
               <View style={styles.circular}>
                 <AnimatedCircularProgress
                   size={36}
-                  width={5}
+                  width={3.5}
                   fill={remainEmerCalls === 0 ? 0 : remainEmerCallConvert}
                   tintColor={CustomColors.errorRed_300}
                   backgroundColor={CustomColors.neutral_200}
@@ -114,11 +114,13 @@ export default function CommonSlots({ data, Progressless }) {
                   prefill={100}
                   lineCap="round"
                 >
-                  {(fill) => <Text>{remainEmerCalls}</Text>}
+                  {(fill) => (
+                    <Text style={styles.remainCallsTxt}>{remainEmerCalls}</Text>
+                  )}
                 </AnimatedCircularProgress>
                 <AnimatedCircularProgress
                   size={36}
-                  width={5}
+                  width={3.5}
                   fill={remainNonEmerCalls === 0 ? 0 : remainNonEmerCallConvert}
                   tintColor={CustomColors.warning_yellow_400}
                   backgroundColor={CustomColors.neutral_200}
@@ -126,7 +128,11 @@ export default function CommonSlots({ data, Progressless }) {
                   prefill={100}
                   lineCap="round"
                 >
-                  {(fill) => <Text>{remainNonEmerCalls}</Text>}
+                  {(fill) => (
+                    <Text style={styles.remainCallsTxt}>
+                      {remainNonEmerCalls}
+                    </Text>
+                  )}
                 </AnimatedCircularProgress>
               </View>
             )}
@@ -181,5 +187,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingHorizontal: horizontalScale(5),
+  },
+  remainCallsTxt: {
+    fontFamily: CustomFonts.PoppinsSemiBold,
+    fontWeight: "600",
+    fontSize: CustomFontSize.title,
+    color: CustomColors.neutral_700,
   },
 });
