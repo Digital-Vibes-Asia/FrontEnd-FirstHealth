@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import FilterBar from "../../common/ActionBar/FilterBar";
 import { useEffect, useState } from "react";
-import { horizontalScale, verticalScale } from "../../utils/common/Metrics";
+import { horizontalScale, moderateScale, verticalScale } from "../../utils/common/Metrics";
 import {
   CustomColors,
   CustomDimensions,
@@ -13,6 +13,7 @@ import { UrlBase } from "../../utils/common/urlbase";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import Progressing from "../../common/Progress/Progressing";
+import NoData from "../../assets/icon/NoDataFile.svg";
 
 const categorizeActivitiesByActivityDate = (activities) => {
   const categorized = {};
@@ -82,14 +83,28 @@ const MyActivity = () => {
           })}
         </View>
       ));
-    }
+    }else{
     return( <>
-      <View style={{flex: 1,height: "100%", MarginTop: "25%"}}>
-        <View style={{display: "flex",justifyContent:"center",alignItems:"center"}}>
-        <Text style={styles.separatorText}>No data found</Text>
+      <View
+          style={{
+            maxWidth: CustomDimensions.screenHeight,
+            minHeight: CustomDimensions.screenHeight / 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: moderateScale(16)
+          }}
+        >
+          <NoData
+            height={CustomDimensions.icon_height_60}
+            width={CustomDimensions.icon_width_60}
+          />
+          <Text style={styles.headText}>No Activity Recorded</Text>
+          <Text style={styles.subText}>
+            Any updates or actions will appear here once available
+          </Text>
         </View>
-      </View>
-      </>)
+      </>)}
   };
 
   return (
@@ -148,6 +163,21 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(12),
     color: CustomColors.neutral_500,
     fontFamily: CustomFonts.PoppinsExtraBold,
+  },
+  headText: {
+    fontFamily: CustomFonts.PoppinsRegular,
+    fontSize: moderateScale(24),
+    fontWeight: "400",
+    lineHeight: moderateScale(28),
+    color: CustomColors.neutral_700,
+  },
+  subText: {
+    fontFamily: CustomFonts.PoppinsRegular,
+    fontSize: moderateScale(14),
+    fontWeight: "400",
+    lineHeight: moderateScale(18),
+    color: CustomColors.neutral_600,
+    textAlign: "center"
   },
 });
 

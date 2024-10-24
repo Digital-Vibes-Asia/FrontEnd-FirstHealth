@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import ActionBar from "../../../common/ActionBar/actionbar";
 import { horizontalScale, verticalScale } from "../../../utils/common/Metrics";
 import {
@@ -19,11 +19,13 @@ import RegisterButton from "../../../common/Button/registerbutton";
 import { useSelector } from "react-redux";
 import { useGetQuery, usePostMutation } from "../../../store/api";
 import { UrlBase } from "../../../utils/common/urlbase";
-import { useEffect, useMemo, useReducer } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import moment from "moment";
 import { ScrollView } from "react-native";
+import InfoDialogue from "../../../common/Dialogs/InfoDialogue";
 
 const MemberRenew = () => {
+  const [infoOpen,setInfoOpen] = useState(false)
   const PIReducer = (state, action) => {
     switch (action.type) {
       case "SET_FIELD":
@@ -307,10 +309,12 @@ const MemberRenew = () => {
                   >
                     What is a Qualifying Period?
                   </Text>
+                  <Pressable onPress={()=>setInfoOpen(true)}>
                   <ExclaimationUp
                     width={CustomDimensions.icon_width_15}
                     height={CustomDimensions.icon_height_15}
                   />
+                  </Pressable>
                 </View>
               </View>
             </View>
@@ -361,6 +365,7 @@ const MemberRenew = () => {
         <Progressing></Progressing>
       )} */}
       </View>
+      <InfoDialogue modalVisible={infoOpen} setModalVisible={setInfoOpen} headText={"What is Qualifying Period ?"} subText={"A Qualifying Period is a period where the validity of your subscription will be checked by our team. You will be notified once your qualifying period is over and you are ready to access your premium benefits."} />
     </View>
   );
 };
